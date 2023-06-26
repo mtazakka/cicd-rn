@@ -9,13 +9,9 @@
 import React from 'react';
 import Crashes from 'appcenter-crashes';
 import Analytics from 'appcenter-analytics';
-import {
-  Button,
-  StyleSheet,
-  View
-} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 export default class App extends React.Component {
   constructor() {
@@ -24,9 +20,9 @@ export default class App extends React.Component {
     this.checkPreviousSession();
   }
 
-  async checkPreviousSession () {
+  async checkPreviousSession() {
     const didCrash = await Crashes.hasCrashedInLastSession();
-    if(didCrash) {
+    if (didCrash) {
       const report = await Crashes.lastSessionCrashReport();
       alert("Sorry about that crash, we're working on a solution");
     }
@@ -35,17 +31,25 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button title="Calculate inflation"
-                onPress={() => Analytics.trackEvent('calculate_inflation', { Internet: 'WiFi', GPS: 'Off' })} />
+        <Text>1234</Text>
+        <Button
+          title="Calculate inflation"
+          onPress={() =>
+            Analytics.trackEvent('calculate_inflation', {
+              Internet: 'WiFi',
+              GPS: 'Off',
+            })
+          }
+        />
       </View>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     marginTop: 40,
-    marginHorizontal: 16
+    marginHorizontal: 16,
   },
   scrollView: {
     backgroundColor: Colors.lighter,
